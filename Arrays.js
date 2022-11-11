@@ -28,4 +28,11 @@ class MyArray {
     this.data[this.length++] = data;
     // return this.length;
   }
+
+  // delete last item
+  pop() {
+    delete this.data[this.length - 1];
+    this.length--;
+    // if you want, you can return it by first copying lastitem value in third variable and then returning it
+  }
 }
