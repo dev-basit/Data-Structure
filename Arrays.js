@@ -22,4 +22,10 @@ class MyArray {
     }
     return -1;
   }
+
+  // also called push
+  insert(data) {
+    this.data[this.length++] = data;
+    // return this.length;
+  }
 }
