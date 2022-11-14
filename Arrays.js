@@ -33,6 +33,22 @@ class MyArray {
   pop() {
     delete this.data[this.length - 1];
     this.length--;
-    // iif you want, you can return it by first copying lastitem value in third variable and then returning it
+    // if you want, you can return it by first copying lastitem value in third variable and then returning it
+  }
+
+  // delete at specific index
+  // delete, (other name)
+  removeAt(index) {
+    // Validate the index
+    if (index < 0 || index >= this.length) throw new Error("index is invalid");
+
+    // shift the items to the left to fill the hole, we can create separate function for this shifting operation, ztm has done it
+    for (let i = index; i < this.length; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+
+    // before decremneting, you must delete the last item, otherwise it will remain in memory
+    delete this.data[this.length - 1];
+    this.length--;
   }
 }
