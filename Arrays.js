@@ -51,4 +51,7 @@ class MyArray {
     delete this.data[this.length - 1];
     this.length--;
   }
+
+  // other methods to implement -> lastIndexOf, contains(return boolean)
+  // finding max, array,intersect(find common item in 2 arrays, array,reverse(), )
 }
