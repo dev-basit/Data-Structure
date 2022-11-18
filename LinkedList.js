@@ -37,4 +37,18 @@ class LinkedList {
       this.printList();
     } else this.addBeginning(data);
   }
+
+  //prepend
+  addBeginning(data) {
+    let newNode = new Node(data);
+    if (this.head) {
+      newNode.next = this.head;
+      this.head = newNode;
+    } else {
+      this.head = this.tail = newNode;
+    }
+
+    this.length++;
+    this.printList();
+  }
 }
