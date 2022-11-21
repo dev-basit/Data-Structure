@@ -51,4 +51,20 @@ class LinkedList {
     this.length++;
     this.printList();
   }
+
+  indexOf(data) {
+    let currentNode = this.head;
+    let index = 0;
+    while (currentNode != null) {
+      if (currentNode.data === data) {
+        console.log(index);
+        return index;
+      }
+      currentNode = currentNode.next;
+      index++;
+    }
+
+    console.log("value didnt exist");
+    return false; // or return -1
+  }
 }
