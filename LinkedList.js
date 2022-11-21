@@ -67,4 +67,20 @@ class LinkedList {
     console.log("value didnt exist");
     return false; // or return -1
   }
+
+  // whether a value or data is present in linked list or not
+  contains(data) {
+    // we can refator this and call indexof function => return indexOf(data)
+    let currentNode = this.head;
+    while (currentNode != null) {
+      if (currentNode.data === data) {
+        console.log("value is present or contains ", true);
+        return true;
+      }
+      currentNode = currentNode.next;
+    }
+
+    console.log("value didnt exist");
+    return false;
+  }
 }
