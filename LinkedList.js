@@ -83,4 +83,28 @@ class LinkedList {
     console.log("value didnt exist");
     return false;
   }
+
+  insertAt(index, data) {
+    if (index === 0) {
+      this.addBeginning(data);
+    } else if (index >= this.length) {
+      //
+      this.addLast(data);
+    } else {
+      let newNode = new Node(data);
+      let i = 0;
+      let currentNode = this.head;
+      while (i < index - 1) {
+        currentNode = currentNode.next;
+        i++;
+      }
+      let temp = currentNode.next;
+      currentNode.next = newNode;
+      newNode.next = temp;
+      this.length++;
+
+      this.printList();
+    }
+  }
+
 }
