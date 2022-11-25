@@ -115,4 +115,24 @@ class LinkedList {
     if (this.head) this.length--;
     this.printList();
   }
+
+  removeLast() {
+    // length === 1
+    if (this.head === this.tail) {
+      this.tail = this.head = null;
+    } else if (this.length > 1) {
+      let currentNode = this.head;
+      while (currentNode.next.next != null) {
+        currentNode = currentNode.next;
+      }
+      this.tail = currentNode;
+      this.tail.next = null;
+    } else {
+      console.log("Linked list doesnt exist");
+      return;
+    }
+    if (this.length > 0) this.length--;
+
+    this.printList();
+  }
 }
