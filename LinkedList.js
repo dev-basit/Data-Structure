@@ -107,4 +107,12 @@ class LinkedList {
     }
   }
 
+  removeFirst() {
+    if (this.head === this.tail) {
+      this.head = this.tail = null;
+    } else if (this.length > 1) this.head = this.head.next; // refactor: if(this.head.next) this.head = this.head.next
+    // js compiler will automatically delete temp or initial this.head
+    if (this.head) this.length--;
+    this.printList();
+  }
 }
