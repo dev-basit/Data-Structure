@@ -135,4 +135,26 @@ class LinkedList {
 
     this.printList();
   }
+
+  // delete at specific index
+  removeAt(index) {
+    if (index >= this.length) {
+      console.log("error: invalid index, plz enter correct index");
+      this.printList();
+      return;
+    } else if (index === 0) this.removeFirst();
+    else if (index === this.length - 1) this.removeLast();
+    else {
+      let currentNode = this.head;
+      let i = 0;
+      while (i < index - 1) {
+        currentNode = currentNode.next;
+        i++;
+      }
+      let tempNode = currentNode.next.next;
+      currentNode.next = tempNode;
+      this.length--;
+      this.printList();
+    }
+  }
 }
