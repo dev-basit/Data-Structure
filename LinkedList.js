@@ -157,4 +157,6 @@ class LinkedList {
       this.printList();
     }
   }
+
+  // reverse() {}
 }
