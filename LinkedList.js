@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class LinkedList {
+export default class LinkedList {
   constructor(data) {
     this.head = new Node(data);
     this.tail = this.head;
@@ -158,24 +158,24 @@ class LinkedList {
     }
   }
 
-  reverse(headNode) {
-    // traverse from head to tail, and add each node data to array
-    let data = [];
-    let currentNode = headNode;
+  // reverse(headNode) {
+  //   // traverse from head to tail, and add each node data to array
+  //   let data = [];
+  //   let currentNode = headNode;
 
-    while (currentNode != null) {
-      data.push(currentNode.data);
-      currentNode = currentNode.next;
-    }
+  //   while (currentNode != null) {
+  //     data.push(currentNode.data);
+  //     currentNode = currentNode.next;
+  //   }
 
-    // reverse the array
-    let reverseData = data.reverse();
+  //   // reverse the array
+  //   let reverseData = data.reverse();
 
-    // build new linkedlist from that reversed array
-    let reverseList = new LinkedList(reverseData[0]);
-    for (let i = 1; i < reverseData.length; i++) reverseList.addLast(reverseData[i]);
+  //   // build new linkedlist from that reversed array
+  //   let reverseList = new LinkedList(reverseData[0]);
+  //   for (let i = 1; i < reverseData.length; i++) reverseList.addLast(reverseData[i]);
 
-    // return this new linkedlist
-    return reverseList;
-  }
+  //   // return this new linkedlist
+  //   return reverseList;
+  // }
 }
