@@ -1,57 +1,58 @@
 class MyArray {
-  constructor(length = 0, data = []) {
-    this.length = length;
-    this.data = data;
+  constructor(length = 0) {
+    this.data = new Array(length).fill(0);
+    this.count = 0;
   }
+
   print() {
-    //    console.log(this.data); // is k through undefined b show hta ta, jb element ko remove kia jata to, islye isko comment krdia
-    for (let i = 0; i < this.length; i++) {
+    for (let i = 0; i < this.data.length; i++) {
       console.log(this.data[i]);
     }
   }
 
-  getlength() {
-    return this.length;
+  length() {
+    return this.count;
   }
 
-  indexof(value) {
-    for (let i = 0; i < this.length; i++) {
-      if (this.data[i] === value) {
-        return i;
-      }
+  indexOf(value) {
+    for (let i = 0; i < this.count; i++) {
+      if (this.data[i] === value) return i;
     }
+
     return -1;
   }
 
-  // also called push
+  // push
   insert(data) {
-    this.data[this.length++] = data;
-    // return this.length;
+    if (this.data.length === this.count) {
+      // dont need to copy old items into new array double the size of original in dynamic programming languages
+    }
+
+    this.data[this.count++] = data;
+    return this.count;
   }
 
-  // delete last item
   pop() {
-    delete this.data[this.length - 1];
-    this.length--;
-    // if you want, you can return it by first copying lastitem value in third variable and then returning it
+    delete this.data[this.count - 1];
+    return --this.count;
   }
 
-  // delete at specific index
-  // delete, (other name)
   removeAt(index) {
-    // Validate the index
-    if (index < 0 || index >= this.length) throw new Error("index is invalid");
+    if (index < 0 || index >= this.count) throw new Error("index is invalid");
 
-    // shift the items to the left to fill the hole, we can create separate function for this shifting operation, ztm has done it
-    for (let i = index; i < this.length; i++) {
+    for (let i = index; i < this.count; i++) {
       this.data[i] = this.data[i + 1];
     }
 
-    // before decremneting, you must delete the last item, otherwise it will remain in memory
-    delete this.data[this.length - 1];
-    this.length--;
+    return --this.count;
   }
-
-  // other methods to implement -> lastIndexOf, contains(return boolean)
-  // finding max, array,intersect(find common item in 2 arrays, array,reverse(), )
 }
+
+const arr1 = new MyArray(5);
+arr1.insert(4);
+arr1.insert(14);
+arr1.pop(7);
+arr1.removeAt(3);
+console.log(arr1.indexOf(10));
+console.log(arr1.length());
+console.log(arr1.pop());
