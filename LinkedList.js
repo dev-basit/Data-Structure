@@ -281,7 +281,7 @@ list.addFirst(5);
 list.addLast(20);
 list.addLast(10);
 list.addFirst(1);
-// list.toArray();
+list.toArray();
 // list.indexOf(0);
 // list.contains(5);
 // list.removeFirst();
