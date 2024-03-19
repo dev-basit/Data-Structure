@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-export class LinkedList {
+class LinkedList {
   constructor(data) {
     if (data) {
       const newNode = new Node(data);
@@ -237,9 +237,6 @@ export class LinkedList {
     let prev = null;
     let current = this.head;
 
-    // update tail pointer
-    this.tail = this.head;
-
     while (current != null) {
       let next = current.next;
       current.next = prev;
@@ -247,7 +244,8 @@ export class LinkedList {
       current = next;
     }
 
-    // update head pointer
+    // update pointers
+    this.tail = this.head;
     this.head = prev;
 
     console.log("After reverse:");
