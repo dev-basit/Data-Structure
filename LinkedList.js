@@ -274,10 +274,11 @@ class LinkedList {
     return reverseList;
   }
 
+  // O(n)
   getKthNodeFromTheEnd(k) {
     if (!this.head) throw new Error("List is empty.");
 
-    if (k > this.length) throw new Error("Index out of bounds");
+    if (k > this.length) throw new Error("Illegal Argument");
 
     let slowPtr = this.head;
     let fastPtr = this.head;
@@ -291,6 +292,67 @@ class LinkedList {
       slowPtr = slowPtr.next;
       fastPtr = slowPtr;
     }
+  }
+
+  // O(n)
+  getKthNodeFromTheEndMosh(k) {
+    let slowPtr = this.head;
+    let fastPtr = this.head;
+
+    for (let i = 1; i < k; i++) {
+      fastPtr = fastPtr.next;
+
+      if (fastPtr == null) throw new Error("Illegal Argument.");
+    }
+
+    while (fastPtr.next != null) {
+      slowPtr = slowPtr.next;
+      fastPtr = fastPtr.next;
+    }
+
+    return slowPtr.data;
+  }
+
+  // O(n)
+  removeKthFromEnd(k) {
+    console.log("Node to remove from end: ", k);
+    this.toArray();
+
+    if (!this.head) return;
+
+    if (k == 1) {
+      this.removeLast();
+      return;
+    }
+
+    if (k == this.length) {
+      this.removeFirst();
+      return;
+    }
+
+    let slowPtr = this.head;
+    let fastPtr = this.head;
+    let prevSlowPtr = null;
+
+    for (let i = 1; i < k; i++) {
+      fastPtr = fastPtr.next;
+
+      if (fastPtr == null) throw new Error("Illegal Argument.");
+    }
+
+    while (fastPtr.next != null) {
+      prevSlowPtr = slowPtr;
+      slowPtr = slowPtr.next;
+      fastPtr = fastPtr.next;
+    }
+
+    if (prevSlowPtr !== null) prevSlowPtr.next = slowPtr.next;
+    else this.head = this.head.next;
+
+    this.length--;
+
+    this.toArray();
+    return this.head;
   }
 }
 
