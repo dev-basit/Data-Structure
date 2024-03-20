@@ -273,15 +273,37 @@ class LinkedList {
     // return this new linkedlist
     return reverseList;
   }
+
+  getKthNodeFromTheEnd(k) {
+    if (!this.head) throw new Error("List is empty.");
+
+    if (k > this.length) throw new Error("Index out of bounds");
+
+    let slowPtr = this.head;
+    let fastPtr = this.head;
+
+    while (true) {
+      for (let i = 0; i <= k; i++) {
+        if (fastPtr != null) fastPtr = fastPtr.next;
+        else return slowPtr.data;
+      }
+
+      slowPtr = slowPtr.next;
+      fastPtr = slowPtr;
+    }
+  }
 }
 
 let list = new LinkedList();
 console.log("list ", list);
-list.addFirst(5);
-list.addLast(20);
-list.addLast(10);
-list.addFirst(1);
-list.toArray();
+list.addFirst(14);
+list.addLast(64);
+list.addLast(56);
+list.addLast(92);
+
+list.getKthNodeFromTheEnd(4);
+
+// list.toArray();
 // list.indexOf(0);
 // list.contains(5);
 // list.removeFirst();
