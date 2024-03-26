@@ -8,7 +8,7 @@ class Node {
 }
 
 // Directed unweighted graph
-class Graph {
+class Graph_Directed_Unweighted {
   constructor() {
     this.nodes = new Map();
     this.adjacencyList = new Map();
@@ -23,7 +23,6 @@ class Graph {
   addEdge(from, to) {
     let fromNode = this.nodes.get(from);
     let toNode = this.nodes.get(to);
-
     if (!fromNode || !toNode) throw new Error("Invalid node keys");
 
     let linkedList = this.adjacencyList.get(fromNode);
@@ -32,13 +31,10 @@ class Graph {
 
   removeNode(label) {
     let node = this.nodes.get(label);
-
     if (node == null) return; // you can also throw exception
 
     for (let item of this.adjacencyList.keys()) {
       let linkedList = this.adjacencyList.get(item);
-
-      // this.adjacencyList.get(item).removeByValue(node.label);
       if (linkedList.length > 0) linkedList.removeByValue(node.label);
     }
 
@@ -49,7 +45,6 @@ class Graph {
   removeEdge(from, to) {
     let fromNode = this.nodes.get(from);
     let toNode = this.nodes.get(to);
-
     if (fromNode == null || toNode == null) return; // you can also throw exception
 
     this.adjacencyList.get(fromNode).removeByValue(toNode.label);
@@ -232,7 +227,7 @@ class Graph {
   }
 }
 
-const graph = new Graph();
+const graph = new Graph_Directed_Unweighted();
 
 graph.addNode("A");
 graph.addNode("B");
